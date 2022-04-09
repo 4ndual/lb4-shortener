@@ -2,6 +2,7 @@ import {ApplicationConfig, UrlShortenerApplication} from './application';
 
 export * from './application';
 
+
 export async function main(options: ApplicationConfig = {}) {
   const app = new UrlShortenerApplication(options);
   await app.boot();
@@ -29,7 +30,12 @@ if (require.main === module) {
       openApiSpec: {
         // useful when used with OpenAPI-to-GraphQL to locate your application
         setServersFromRequest: true,
+        endpointMapping: {
+          '/openapi.json': {version: '3.0.0', format: 'json'},
+          '/openapi.yaml': {version: '3.0.0', format: 'yaml'},
+        }
       },
+      
     },
   };
   main(config).catch(err => {

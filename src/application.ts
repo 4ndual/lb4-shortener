@@ -29,6 +29,9 @@ export class UrlShortenerApplication extends BootMixin(
       path: '/explorer',
     });
     this.component(RestExplorerComponent);
+    this.configure(RestExplorerBindings.COMPONENT).to({
+      useSelfHostedSpec: false,
+    });
 
     this.projectRoot = __dirname;
     // Customize @loopback/boot Booter Conventions here
